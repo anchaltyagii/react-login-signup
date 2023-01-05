@@ -4,16 +4,16 @@ import version from "../package.json";
 import Login from "./Screens/Login";
 import SignUp from "./Screens/Signup";
 import "./App.scss";
+import NavBar from "./Components/NavBar/NavBar";
 
 function App() {
   return (
     <div className="App">
-      Astro website
+      {/* <NavBar /> */}
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/signup" component={SignUp} />
       </Switch>
-      <div>version: {version.version}</div>
     </div>
   );
 }
