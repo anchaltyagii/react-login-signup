@@ -1,14 +1,21 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { icons } from "../../Assets";
 import "./index.scss";
 
 const Login = () => {
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const handleValidation = () => {};
+
   const handleLoginSubmit = () => {
-    console.log("Submitted");
+    if (email === "abc@gmail.com" && password === "123456") {
+      history.push("/home-page");
+    } else {
+      alert("Password or username is wrong");
+    }
   };
 
   return (
@@ -23,22 +30,22 @@ const Login = () => {
           />
         </div>
         <div className="login-wrapper">
-          <h3>Login Form</h3>
+          <h3>Sign in</h3>
           <div className="container">
             <div className="row form-group mt-2">
-              <label class="form-label">Enter Email:</label>
+              <label class="form-label ps-0">Enter Email:</label>
               <input
                 type="email"
-                placeholder="Enter email"
+                placeholder="Email"
                 className="form-control"
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="row form-group mt-2">
-              <label class="form-label">Enter Password:</label>
+              <label class="form-label ps-0">Enter Password:</label>
               <input
                 type="password"
-                placeholder="Enter password"
+                placeholder="Password"
                 className="form-control"
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -47,17 +54,17 @@ const Login = () => {
               <button
                 className={
                   email && password
-                    ? "btn btn-primary"
+                    ? "btn btn-primary signin-btn"
                     : "btn btn-primary btn-disable"
                 }
                 onClick={handleLoginSubmit}
               >
-                Login
+                Sign in
               </button>
             </div>
             <div className="row mt-3">
               <div>
-                New? <NavLink to="/signup">SignUp</NavLink>
+                New? <NavLink to="/signup">Join now</NavLink>
               </div>
             </div>
           </div>

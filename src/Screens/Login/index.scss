@@ -20,9 +20,14 @@
     font-family: inter;
    }
 
+   .signin-btn {
+    border-radius: 35px;
+   }
+
   .btn-disable {
     opacity: 0.4;
     cursor: not-allowed;
+    border-radius: 35px;
   }
 }
 

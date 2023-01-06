@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { icons } from "../../Assets";
 import "./index.scss";
 
@@ -7,9 +7,20 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordError, setPasswordError] = useState(null);
 
+  const history = useHistory();
   const handleRegisterSubmit = () => {
-    console.log("Submitted");
+    alert("Submitted Successfully");
+    history.push("/");
+  };
+
+  const handleValidation = () => {
+    if (password === confirmPassword) {
+      handleRegisterSubmit();
+    } else {
+      setPasswordError("password and confirm password is not same");
+    }
   };
 
   return (
@@ -24,50 +35,53 @@ const SignUp = () => {
           />
         </div>
         <div className="login-wrapper">
-          <h3>Register</h3>
+          <h3>Sign Up</h3>
           <div className="container">
             <div className="row form-group mt-2">
-              <label class="form-label">Enter Email:</label>
+              <label class="form-label ps-0">Enter Email:</label>
               <input
                 type="email"
-                placeholder="Enter email"
+                placeholder="Email"
                 className="form-control"
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="row form-group mt-2">
-              <label class="form-label">Enter Password:</label>
+              <label class="form-label ps-0">Enter Password:</label>
               <input
                 type="password"
-                placeholder="Enter password"
+                placeholder="Password"
                 className="form-control"
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className="row form-group mt-2">
-              <label class="form-label">Confirm Password:</label>
+              <label class="form-label ps-0">Confirm Password:</label>
               <input
                 type="password"
-                placeholder="Enter password"
+                placeholder="Confirm password"
                 className="form-control"
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </div>
+
+            <div>{passwordError && <p className="error-msg">{passwordError}</p>}</div>
+            
             <div className="row mt-3">
               <button
                 className={
-                  email && password
-                    ? "btn btn-primary"
+                  email && password && confirmPassword
+                    ? "btn btn-primary signin-btn"
                     : "btn btn-primary btn-disable"
                 }
-                onClick={handleRegisterSubmit}
+                onClick={handleValidation}
               >
-                Submit
+                Sign Up
               </button>
             </div>
             <div className="row mt-3">
               <div>
-                <NavLink to="/">Login</NavLink>
+                Already a user? <NavLink to="/">Login</NavLink>
               </div>
             </div>
           </div>

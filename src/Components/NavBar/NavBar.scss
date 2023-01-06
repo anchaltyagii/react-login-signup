@@ -1,5 +1,49 @@
 .navbar-wrapper {
   height: 100vh;
   width: 15vw;
-  background-color: rgb(170, 41, 170);
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-right: 1px grey solid;
+
+  .navlinks-wrapper {
+    display: flex;
+    flex-direction: column;
+    column-gap: 25px;
+    padding: 25px 0px;
+
+    .nav-title {
+      background-color: #e9ecef;
+      margin: 6px 0px;
+      color: #000 !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 45px;
+      border-bottom: 0px grey solid;
+    }
+
+    .nav-title:hover {
+      background-color: #2abdd4;
+      color: #fff !important;
+    }
+
+    .nav-title-active {
+      background-color: #2abdd4;
+      color: #fff;
+      margin: 6px 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 45px;
+      border-bottom: 0px grey solid;
+    }
+  }
+}
+
+.version-wrapper {
+  position: fixed;
+  bottom: 0px;
+  left: 6px;
+  font-size: 12px;
 }
